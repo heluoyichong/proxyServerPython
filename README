@@ -1,0 +1,8 @@
+# Add host-user mapping record through Django shell
+
+./manage.py shell
+
+>from proxyserver.app.main.models import *
+>u1 = Account.objects.get(loginName='bjlin')
+# objects.get returns a object, but not a QuerySet like objects.filter does
+>Host.objects.get(hostName='<hostname>').account.add(u1)
